@@ -4,10 +4,10 @@ import Header from "./components/Header.jsx";
 import Formularioiniciosesion from "./components/Formularioiniciosesion.jsx";
 import Formularioregistro from "./components/Formularioregistro.jsx";
 import Formularioregistroinmueble from "./components/Formularioregistroinmueble.jsx";
-import gestiondeinmuebles from "./components/gestiondeinmuebles.jsx";
-import detalleinmueble from "./components/detalleinmueble.jsx";
+import Gestiondeinmuebles from "./components/Gestiondeinmuebles.jsx";
+import Detalleinmueble from "./components/Detalleinmueble.jsx";
 import Listadoinmueble from "./components/Listadoinmueble.jsx";
-import citas from "./components/citas.jsx";
+import Citas from "./components/Citas.jsx";
 import Footer from "./components/Footer.jsx";
 
 import "./App.css";

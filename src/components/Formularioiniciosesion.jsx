@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./login.css";
+import "../App.css";
 
-function Login() {
+function Formularioiniciosesion({ siguiente }) {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [recordarme, setRecordarme] = useState(false);
@@ -12,6 +12,8 @@ function Login() {
     console.log("Usuario:", usuario);
     console.log("Contraseña:", contrasena);
     console.log("Recordarme:", recordarme);
+
+    siguiente();
   };
 
   return (
@@ -22,7 +24,7 @@ function Login() {
 
           <form onSubmit={iniciarSesion}>
             <div className="input-icon">
-              <img src="/IMAGENES/ICONOUSU.png" alt="Usuario" />
+              <img src="/src/assets/IMAGENES/ICONOUSU.png" alt="Usuario" />
 
               <input
                 type="text"
@@ -33,7 +35,10 @@ function Login() {
             </div>
 
             <div className="input-icon">
-              <img src="/IMAGENES/ICONOCONTRA.png" alt="Contraseña" />
+              <img
+                src="/src/assets/IMAGENES/ICONOCONTRA.png"
+                alt="Contraseña"
+              />
 
               <input
                 type="password"
@@ -62,7 +67,6 @@ function Login() {
           </div>
 
           <div className="col">
-
             <div className="social-btn">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
@@ -98,16 +102,22 @@ function Login() {
         </div>
       </div>
       <div className="right">
-        <img src="/IMAGENES/LOGOINMO1.png" alt="Logo inmobiliaria" />
+        <img src="/src/assets/IMAGENES/LOGOINMO1.png" alt="Logo inmobiliaria" />
 
         <div className="registro">
           <p>¿No tienes una cuenta?</p>
 
-          <a href="/registro">Regístrate aquí</a>
+          <a
+            href="#" onClick={(e) => {e.preventDefault();
+              siguiente();
+            }}
+          >
+            Regístrate aquí
+          </a>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Formularioiniciosesion;
