@@ -1,3 +1,7 @@
+/* =========================================================
+   ESTILOS GENERALES
+========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -5,59 +9,76 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    background:#ffffff;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+html,
+body {
+  overflow-x: hidden;
 }
 
+/* =========================================================
+  FOOTER
+========================================================= */
 
-.container {
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  width: 100%;
+  background: #0d3152;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =========================================================
+   CSS INCIO DE SESION 
+========================================================= */
+
+.login-container {
   width: 1100px;
-  height: 650px;
+  min-height: 650px;
+  margin: 40px auto;
   background: #fff;
   border-radius: 18px;
   display: flex;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, .25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 
-.left{
-    width:45%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:40px;
+/* ---------- Lado izquierdo ---------- */
+
+.login-left {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
-.left h2 {
+.login-form-wrapper {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-form-wrapper h2 {
   text-align: center;
-  font-size: 35px;
-  margin-bottom: 35px;
   color: #000;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-
-.logincontenedor{
-    width:100%;
-    max-width:420px;
-}
-
-
-.logincontenedor h2 {
-  text-align: center;
-  color: #000000;
   font-size: 30px;
   margin-bottom: 35px;
   font-weight: 700;
 }
 
 
-.logincontenedor form {
+/* ---------- Formulario ---------- */
+
+.login-form-wrapper form {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -66,20 +87,15 @@ body{
 }
 
 
-.input-icon {
+/* ---------- Inputs con icono ---------- */
+
+.login-input-icon {
   position: relative;
   width: 100%;
   margin-bottom: 18px;
 }
 
-
-.input-icon {
-  position: relative;
-  width: 100%;
-  margin-bottom: 18px;
-}
-
-.input-icon img {
+.login-input-icon img {
   position: absolute;
   left: 15px;
   top: 50%;
@@ -89,157 +105,971 @@ body{
   pointer-events: none;
 }
 
-.input-icon input {
+.login-input-icon input {
   width: 100%;
   height: 50px;
   padding: 0 15px 0 50px;
   border: none;
   border-radius: 10px;
   background: #e0dfdf;
-  color: #000000;
+  color: #000;
   font-size: 15px;
   outline: none;
-  transition: .3s;
+  transition: 0.3s;
+}
+
+.login-input-icon input:focus {
+  background: #d6d6d6;
 }
 
 
+/* ---------- Opciones ---------- */
 
-.opciones {
+.login-opciones {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
   font-size: 14px;
-  margin: 40px;
 }
 
-.opciones label {
+.login-opciones label {
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 }
 
-.opciones input[type="checkbox"] {
+.login-opciones input[type="checkbox"] {
   width: 16px;
   height: 16px;
 }
 
-.opciones a {
+.login-opciones a {
   text-decoration: none;
   color: #0b1d39;
 }
 
-.opciones a:hover {
+.login-opciones a:hover {
   text-decoration: underline;
 }
 
 
-button {
-  width: 100%;
-  height: 52px;
+/* ---------- Botón login ---------- */
+
+.login-form-wrapper form > button {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(90deg, #c67b38, #eba04d);
+  color: #fff;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: lighter;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
 }
 
-button[type="submit"]{
-    width:200px;
-    height:40px;
-    background:linear-gradient(90deg,#c67b38,#eba04d);
-    color:#fff;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:lighter;
-    justify-content: center;
-    display: block;
-    margin: 20px auto;
+.login-form-wrapper form > button:hover {
+  opacity: 0.9;
 }
 
-button[type="submit"]:hover {
-  opacity: .9;
-}
 
-.redes {
+/* ---------- Redes sociales ---------- */
+
+.login-redes {
   text-align: center;
   margin: 35px 0 25px;
   color: #202020;
-  font-size: 18px;
 }
 
-.redes h1 {
-  font-size: 13px;
+.login-redes h3 {
+  font-size: 12px;
   font-weight: bold;
 }
 
-.redes h3{
-  font-size: 12px;
-}
-
-.col {
+.login-social-col {
   display: flex;
   flex-direction: column;
   gap: 15px;
   justify-content: center;
 }
 
-.col p{
-  text-align:center;
+.login-social-btn {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 18px;
+  border: 1px solid #d7d7d7;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.social-btn{
-    width:100%;
-    min-height:30px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:0 18px;
-    border:1px solid #d7d7d7;
-    border-radius:10px;
-}
-
-.social-btn:hover {
+.login-social-btn:hover {
   background: #f8f8f8;
 }
 
-.social-btn img {
+.login-social-btn img {
   width: 24px;
   height: 24px;
 }
 
-.col p {
+.login-social-col p {
+  text-align: center;
   margin-top: 10px;
   font-size: 12px;
   color: #151515;
   line-height: 18px;
 }
 
-.col p a {
+.login-social-col p a {
   color: #528cd8;
 }
 
-.right {
+
+/* ---------- Lado derecho ---------- */
+
+.login-right {
   width: 55%;
-  display:block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #fff;
+  padding: 30px;
 }
 
-.right img {
-  width: 820px;
+.login-right > img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+}
+
+.login-registro {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.login-registro p {
+  margin-bottom: 5px;
+}
+
+.login-registro a {
+  color: #528cd8;
+  text-decoration: none;
+}
+
+.login-registro a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   CSS DE REGISTRO
+========================================================= */
+
+.registro-container {
+  width: 1100px;
+  min-height: 650px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ---------- Lado izquierdo ---------- */
+
+.registro-left {
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.registro-form-wrapper {
+  width: 100%;
+  max-width: 420px;
+}
+
+.registro-form-wrapper h2 {
+  text-align: center;
+  color: #000;
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+
+/* ---------- Inputs ---------- */
+
+.registro-input-icon {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.registro-input-icon img {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.registro-input-icon input {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px 0 50px;
+  border: none;
+  border-radius: 10px;
+  background: #e0dfdf;
+  color: #000;
+  font-size: 15px;
+  outline: none;
+}
+
+.registro-input-icon input:focus {
+  background: #d6d6d6;
+}
+
+
+/* ---------- Botones ---------- */
+
+.registro-botones-registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.registro-btn-anterior,
+.registro-btn-registrarme {
+  width: 170px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.registro-btn-anterior {
+  background: #444;
+  color: #fff;
+}
+
+.registro-btn-anterior:hover {
+  background: #333;
+}
+
+.registro-btn-registrarme {
+  background: linear-gradient(90deg, #c67b38, #eba04d);
+  color: #fff;
+}
+
+.registro-btn-registrarme:hover {
+  opacity: 0.9;
+}
+
+
+/* ---------- Lado derecho ---------- */
+
+.registro-right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 40px;
+}
+
+.registro-right > img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+}
+
+.registro-leyenda {
+  max-width: 450px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.registro-leyenda > p {
+  font-size: 15px;
+  line-height: 23px;
+  color: #444;
+}
+
+.registro-login-link {
+  margin-top: 25px;
+}
+
+.registro-login-link p {
+  margin-bottom: 5px;
+}
+
+.registro-login-link a {
+  color: #528cd8;
+  text-decoration: none;
+}
+
+.registro-login-link a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   RESPONSIVE LOGIN / REGISTRO
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .login-container,
+  .registro-container {
+    width: 95%;
+    min-height: auto;
+  }
+
+  .login-left,
+  .login-right,
+  .registro-left,
+  .registro-right {
+    width: 50%;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .login-container,
+  .registro-container {
+    width: 95%;
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right,
+  .registro-left,
+  .registro-right {
+    width: 100%;
+  }
+
+  .login-right,
+  .registro-right {
+    padding: 30px;
+  }
+
+  .registro-botones-registro {
+    flex-direction: column;
+  }
+
+  .registro-btn-anterior,
+  .registro-btn-registrarme {
+    width: 200px;
+  }
+
+}
+
+/* =========================================================
+   CSS LISTADO DE INMUEBLES
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  position: relative;
+}
+
+.banner3 {
+  position: relative;
+  line-height: 0;
+  height: 350px;
+}
+
+.fondolistado {
+  display: block;
+  width: 100%;
+}
+
+
+/* =========================================================
+   MENÚ
+========================================================= */
+
+.header .navbar {
+  position: relative;
+  z-index: 30;
+}
+
+.header .navbar img {
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.titu {
+  text-align: center;
+  padding: 30px 0 10px;
+}
+
+.titu h2 {
+  color: #0d3152;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge-tipo {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.bg-orange {
+  background-color: #ff8c00;
+  color: white;
+}
+
+.bg-blue {
+  background-color: #0d3152;
+  color: white;
+}
+
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.inmueble-card {
+  min-height: 550px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  position: relative;
+  background: #fff;
+}
+
+.inmueble-card img.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.inmueble-card .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+
+.inmueble-card .card-title {
+  color: #0d3152;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.ubicacion {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   INFORMACIÓN DEL INMUEBLE
+========================================================= */
+
+.informacion {
+  flex-grow: 0;
+}
+
+.informacion .col-6 {
+  margin-bottom: 0;
+  height: 50px;
+}
+
+.informacion strong {
+  color: #333;
+  font-size: 14px;
+}
+
+.informacion span {
+  color: #666;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   PRECIO Y BOTÓN
+========================================================= */
+
+.inmueble-card .precio {
+  color: #0d3152;
+  font-weight: bold;
+  margin: 0;
+  font-size: 18px;
+}
+
+.inmueble-card .d-flex {
+  margin-top: auto;
+}
+
+.inmueble-card .btn {
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   BARRA DE BÚSQUEDA
+========================================================= */
+
+.search-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: -35px;
+  z-index: 20;
+  padding: 0 15px;
+}
+
+.search-bar {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  padding: 20px 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 18px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 150px;
+  min-width: 130px;
+}
+
+.search-field label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #0d3152;
+}
+
+.search-field input,
+.search-field select {
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  color: #333;
+  outline: none;
+}
+
+.search-field input:focus,
+.search-field select:focus {
+  border-color: #0d3152;
+}
+
+.search-field-price {
+  flex: 1 1 180px;
+}
+
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-inputs input {
+  width: 100%;
+  min-width: 0;
+}
+
+.search-btn {
+  border-radius: 8px;
+  padding: 9px 24px;
+  font-weight: bold;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #c67b38, #eba04d);
+  border: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .search-bar-wrapper {
+    margin-top: 15px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-field {
+    width: 100%;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  .inmueble-card {
+    min-height: auto;
+  }
+
+}
+
+/* =========================================================
+   CSS DE CITAS 
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   PÁGINA DE CITAS
+========================================================= */
+
+.citas-page {
+  width: 100%;
+  background: #fff;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.citas-header {
+  width: 100%;
+}
+
+.citas-header .navbar {
+  width: 100%;
+}
+
+.citas-header .navbar img {
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.citas-banner {
+  position: relative;
+  line-height: 0;
+}
+
+.citas-fondocitas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.citas-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 30px;
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   LADO IZQUIERDO
+========================================================= */
+
+.citas-left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.citas-form-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+
+.citas-form-wrapper h2 {
+  margin: 5px 0 35px;
+  text-align: center;
+  font-size: 35px;
+  color: #000;
+  font-family:
+    "Gill Sans",
+    "Gill Sans MT",
+    Calibri,
+    "Trebuchet MS",
+    sans-serif;
+}
+
+
+/* =========================================================
+   INPUTS CON ICONO
+========================================================= */
+
+.citas-input-icon {
+  position: relative;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.citas-input-icon img {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.citas-input-icon input {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px 0 50px;
+  border: none;
+  border-radius: 10px;
+  background: #f2f2f2;
+  color: #000;
+  font-size: 15px;
+  outline: none;
+}
+
+.citas-input-icon input:focus {
+  background: #e9e9e9;
+}
+
+
+/* =========================================================
+   SELECT MOTIVO
+========================================================= */
+
+.citas-input-icon-select {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.citas-input-icon-select label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.citas-input-icon-select select {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 10px;
+  background: #f2f2f2;
+  font-size: 15px;
+  outline: none;
+}
+
+
+/* =========================================================
+   FECHA Y HORA
+========================================================= */
+
+.citas-form-wrapper > form > label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+.citas-form-wrapper input[type="date"],
+.citas-form-wrapper input[type="time"] {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background: #f2f2f2;
+  padding: 0 15px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.citas-input-icon label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.citas-input-icon textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #f2f2f2;
+  resize: vertical;
+  outline: none;
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.citas-opciones {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.citas-opciones button {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(90deg, #c67b38, #eba04d);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.citas-opciones button:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   LADO DERECHO / MAPA
+========================================================= */
+
+.citas-right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.citas-right iframe {
+  width: 100%;
   height: 550px;
-  max-width: 100%;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-.registro{
-    right:35px;
-    justify-content: center;
-    font-size:16px;
-    display: flex;
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .citas-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .citas-left,
+  .citas-right {
+    width: 100%;
+  }
+
+  .citas-form-wrapper {
+    max-width: 600px;
+  }
+
 }
 
+
+@media (max-width: 600px) {
+
+  .citas-content {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+
+  .citas-form-wrapper h2 {
+    font-size: 28px;
+  }
+
+  .citas-right iframe {
+    height: 400px;
+  }
+
+}
 

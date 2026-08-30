@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "./Footer.jsx";
 import "../App.css";
 
 function Formularioregistro({ persona, setPersona, anterior, siguiente }) {
@@ -48,193 +49,148 @@ function Formularioregistro({ persona, setPersona, anterior, siguiente }) {
   };
 
   return (
-    <div className="container">
+    <>
+      <div className="registro-container">
+        <div className="registro-left">
+          <div className="registro-form-wrapper">
+            <h2>
+              BIENVENID@!
+              <br />
+              REGÍSTRATE
+            </h2>
 
-      <div className="left">
+            <form onSubmit={registrar}>
+              <div className="registro-input-icon">
+                <img src="/src/assets/IMAGENES/ICONOUSU.png" alt="Nombres" />
 
-        <div className="logincontenedor">
+                <input
+                  type="text"
+                  placeholder="Nombres"
+                  value={persona.nombre}
+                  onChange={(e) =>
+                    setPersona({ ...persona, nombre: e.target.value })
+                  }
+                />
+              </div>
 
-          <h2>
-            BIENVENID@!
-            <br />
-            REGÍSTRATE
-          </h2>
+              <div className="registro-input-icon">
+                <img src="/src/assets/IMAGENES/ICONOUSU.png" alt="Apellidos" />
 
-          <form onSubmit={registrar}>
+                <input
+                  type="text"
+                  placeholder="Apellidos"
+                  value={persona.apellido}
+                  onChange={(e) =>
+                    setPersona({ ...persona, apellido: e.target.value })
+                  }
+                />
+              </div>
 
-            <div className="input-icon">
-              <img
-                src="/src/assets/IMAGENES/ICONOUSU.png"
-                alt="Nombres"
-              />
+              <div className="registro-input-icon">
+                <img src="/src/assets/IMAGENES/icorreo.png" alt="Correo" />
 
-              <input
-                type="text"
-                placeholder="Nombres"
-                value={persona.nombre}
-                onChange={(e) =>
-                  setPersona({
-                    ...persona,
-                    nombre: e.target.value,
-                  })
-                }
-              />
-            </div>
+                <input
+                  type="email"
+                  placeholder="Correo electrónico"
+                  value={persona.correo}
+                  onChange={(e) =>
+                    setPersona({ ...persona, correo: e.target.value })
+                  }
+                />
+              </div>
 
-            <div className="input-icon">
-              <img
-                src="/src/assets/IMAGENES/ICONOUSU.png"
-                alt="Apellidos"
-              />
+              <div className="registro-input-icon">
+                <img src="/src/assets/IMAGENES/itelef.png" alt="Teléfono" />
 
-              <input
-                type="text"
-                placeholder="Apellidos"
-                value={persona.apellido}
-                onChange={(e) =>
-                  setPersona({
-                    ...persona,
-                    apellido: e.target.value,
-                  })
-                }
-              />
-            </div>
+                <input
+                  type="tel"
+                  placeholder="Teléfono"
+                  value={persona.telefono}
+                  onChange={(e) =>
+                    setPersona({ ...persona, telefono: e.target.value })
+                  }
+                />
+              </div>
 
-            <div className="input-icon">
-              <img
-                src="/src/assets/IMAGENES/icorreo.png"
-                alt="Correo"
-              />
+              <div className="registro-input-icon">
+                <img
+                  src="/src/assets/IMAGENES/ICONOCONTRA.png"
+                  alt="Contraseña"
+                />
 
-              <input
-                type="email"
-                placeholder="Correo electrónico"
-                value={persona.correo}
-                onChange={(e) =>
-                  setPersona({
-                    ...persona,
-                    correo: e.target.value,
-                  })
-                }
-              />
-            </div>
+                <input
+                  type="password"
+                  placeholder="Contraseña"
+                  value={persona.contrasena}
+                  onChange={(e) =>
+                    setPersona({ ...persona, contrasena: e.target.value })
+                  }
+                />
+              </div>
 
-            <div className="input-icon">
-              <img
-                src="/src/assets/IMAGENES/itelef.png"
-                alt="Teléfono"
-              />
+              <div className="registro-input-icon">
+                <img
+                  src="/src/assets/IMAGENES/ICONOCONTRA.png"
+                  alt="Confirmar contraseña"
+                />
 
-              <input
-                type="tel"
-                placeholder="Teléfono"
-                value={persona.telefono}
-                onChange={(e) =>
-                  setPersona({
-                    ...persona,
-                    telefono: e.target.value,
-                  })
-                }
-              />
-            </div>
+                <input
+                  type="password"
+                  placeholder="Ingrese nuevamente la contraseña"
+                  value={confirmarContrasena}
+                  onChange={(e) => setConfirmarContrasena(e.target.value)}
+                />
+              </div>
 
-            <div className="input-icon">
-              <img
-                src="/src/assets/IMAGENES/ICONOCONTRA.png"
-                alt="Contraseña"
-              />
+              <div className="registro-botones-registro">
+                <button
+                  type="button"
+                  onClick={anterior}
+                  className="registro-btn-anterior"
+                >
+                  VOLVER
+                </button>
 
-              <input
-                type="password"
-                placeholder="Contraseña"
-                value={persona.contrasena}
-                onChange={(e) =>
-                  setPersona({
-                    ...persona,
-                    contrasena: e.target.value,
-                  })
-                }
-              />
-            </div>
-
-            <div className="input-icon">
-              <img
-                src="/src/assets/IMAGENES/ICONOCONTRA.png"
-                alt="Confirmar contraseña"
-              />
-
-              <input
-                type="password"
-                placeholder="Ingrese nuevamente la contraseña"
-                value={confirmarContrasena}
-                onChange={(e) =>
-                  setConfirmarContrasena(e.target.value)
-                }
-              />
-            </div>
-
-            <div className="botones-registro">
-
-              <button
-                type="button"
-                onClick={anterior}
-                className="btn-anterior"
-              >
-                VOLVER
-              </button>
-
-              <button
-                type="submit"
-                className="btn-registrarme"
-              >
-                REGISTRARME
-              </button>
-
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
-
-      <div className="right">
-
-        <img
-          src="/src/assets/IMAGENES/LOGOINMO1.png"
-          alt="Logo inmobiliaria"
-        />
-
-        <div className="leyenda">
-
-          <p>
-            Accede a miles de inmuebles disponibles para venta y
-            arriendo. Encuentra las mejores ubicaciones, precios
-            competitivos y la asesoría que necesitas para hacer
-            realidad tu próximo hogar.
-          </p>
-
-          <div className="registro">
-
-            <p>¿Ya tienes una cuenta?</p>
-
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                anterior();
-              }}
-            >
-              Inicia sesión aquí
-            </a>
-
+                <button type="submit" className="registro-btn-registrarme">
+                  REGISTRARME
+                </button>
+              </div>
+            </form>
           </div>
-
         </div>
 
+        <div className="registro-right">
+          <img
+            src="/src/assets/IMAGENES/LOGOINMO1.png"
+            alt="Logo inmobiliaria"
+          />
+
+          <div className="registro-leyenda">
+            <p>
+              Accede a miles de inmuebles disponibles para venta y arriendo.
+              Encuentra las mejores ubicaciones, precios competitivos y la
+              asesoría que necesitas para hacer realidad tu próximo hogar.
+            </p>
+
+            <div className="registro-login-link">
+              <p>¿Ya tienes una cuenta?</p>
+
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  anterior();
+                }}
+              >
+                Inicia sesión aquí
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
-    </div>
+      <Footer />
+    </>
   );
 }
 

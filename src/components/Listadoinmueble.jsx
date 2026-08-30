@@ -1,604 +1,326 @@
+import Footer from "./Footer.jsx";
+import "../App.css";
 
-function Listadoinmueble() {
+// ---------- Imágenes ----------
+import logo from "../assets/IMAGENES/logoblanco.png";
+import banner3 from "../assets/IMAGENES/Banner3.png";
+import casa1 from "../assets/IMAGENES/CASA1.jpeg";
+import apto1 from "../assets/IMAGENES/APTO1.jpeg";
+import apto2 from "../assets/IMAGENES/APTO2.jpg";
+import apto3 from "../assets/IMAGENES/APTO3.jpg";
+import apto4 from "../assets/IMAGENES/APTO4.jpg";
+import apto5 from "../assets/IMAGENES/APTO5.jpg";
+// ---------- Datos ----------
+const propiedadesVenta = [
+  {
+    id: 1,
+    tipo: "Venta",
+    badgeClass: "bg-blue",
+    imagen: casa1,
+    titulo: "Casa Familiar 2 Niveles",
+    ubicacion: "Chía, Cundinamarca",
+    area: "350 m²",
+    habitaciones: 4,
+    banos: 3,
+    parqueaderos: 2,
+    precio: "$1.000.000.000",
+  },
+  {
+    id: 2,
+    tipo: "Venta",
+    badgeClass: "bg-blue",
+    imagen: apto1,
+    titulo: "Apartamento - Ciudad Salitre",
+    ubicacion: "Bogotá D.C.",
+    area: "69 m²",
+    habitaciones: 3,
+    banos: 2,
+    parqueaderos: 1,
+    precio: "$450.000.000",
+  },
+  {
+    id: 3,
+    tipo: "Venta",
+    badgeClass: "bg-blue",
+    imagen: apto2,
+    titulo: "Apartamento - Chico Norte",
+    ubicacion: "Bogotá D.C.",
+    area: "120 m²",
+    habitaciones: 4,
+    banos: 3,
+    parqueaderos: 1,
+    precio: "$800.000.000",
+  },
+];
+
+const propiedadesArriendo = [
+  {
+    id: 4,
+    tipo: "Arriendo",
+    badgeClass: "bg-orange",
+    imagen: apto3,
+    titulo: "Apartamento - Poblado",
+    ubicacion: "Medellín",
+    area: "98 m²",
+    habitaciones: 3,
+    banos: 2,
+    parqueaderos: 1,
+    precio: "$2.000.000 / mes",
+  },
+  {
+    id: 5,
+    tipo: "Arriendo",
+    badgeClass: "bg-orange",
+    imagen: apto5,
+    titulo: "Apartamento - Chapinero",
+    ubicacion: "Bogotá D.C.",
+    area: "54 m²",
+    habitaciones: 2,
+    banos: 2,
+    parqueaderos: 1,
+    precio: "$1.700.000 / mes",
+  },
+  {
+    id: 6,
+    tipo: "Arriendo",
+    badgeClass: "bg-orange",
+    imagen: apto4,
+    titulo: "Apartamento - Bocagrande",
+    ubicacion: "Cartagena",
+    area: "89 m²",
+    habitaciones: 2,
+    banos: 2,
+    parqueaderos: 1,
+    precio: "$1.900.000 / mes",
+  },
+];
+
+// ---------- Tarjeta de inmueble ----------
+function PropertyCard({ propiedad }) {
+  const {
+    tipo,
+    badgeClass,
+    imagen,
+    titulo,
+    ubicacion,
+    area,
+    habitaciones,
+    banos,
+    parqueaderos,
+    precio,
+  } = propiedad;
+
   return (
-    <div>
+    <div className="col">
+      <div className="card inmueble-card">
+        <div className={`badge-tipo ${badgeClass}`}>{tipo}</div>
 
-      <header className="header">
+        <img src={imagen} className="card-img-top" alt={titulo} />
 
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div className="card-body">
+          <h4 className="card-title">{titulo}</h4>
+          <p className="ubicacion">{ubicacion}</p>
 
-          <div className="container-fluid">
+          <hr />
 
-            <img
-              src="/IMAGENES/logoblanco.png"
-              alt="Logo"
-              style={{ width: "40px" }}
-              className="rounded-pill"
-            />
-
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#mynavbar"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="mynavbar">
-
-              <ul className="navbar-nav me-auto">
-
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Mi Cuenta
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Registrarse
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    +57 3112225555 citas
-                  </a>
-                </li>
-
-              </ul>
-
-              <form className="d-flex">
-
-                <input
-                  className="form-control me-2"
-                  type="text"
-                  placeholder="¿Qué quieres consultar?"
-                />
-
-                <button
-                  className="btn btn-dark"
-                  type="button"
-                >
-                  Buscar
-                </button>
-
-              </form>
-
+          <div className="row informacion">
+            <div className="col-6">
+              <strong>Área</strong>
+              <br />
+              <span>{area}</span>
             </div>
-
+            <div className="col-6">
+              <strong>Habitaciones</strong>
+              <br />
+              <span>{habitaciones}</span>
+            </div>
+            <div className="col-6 mt-3">
+              <strong>Baños</strong>
+              <br />
+              <span>{banos}</span>
+            </div>
+            <div className="col-6 mt-3">
+              <strong>Parqueaderos</strong>
+              <br />
+              <span>{parqueaderos}</span>
+            </div>
           </div>
 
-        </nav>
+          <hr />
 
-
-        {/* BANNER */}
-        <div className="banner1">
-
-          <img
-            src="/IMAGENES/Banner1.png"
-            alt="Fondo listado"
-            style={{ width: "100%" }}
-            className="fondolistado"
-          />
-
+          <div className="d-flex justify-content-between align-items-center">
+            <h5 className="precio">{precio}</h5>
+            <a href="#" className="btn btn-dark">
+              Ver más
+            </a>
+          </div>
         </div>
+      </div>
+    </div>
+  );
+}
 
-
-        {/* MENÚ INFERIOR */}
+// ---------- Header (nav + banner) ----------
+function Header() {
+  return (
+    <header className="header">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="container-fluid">
-
-          <div className="row">
-
-            <div className="col-6 col-md-6 col-lg-4 bg-secondary text-white p-2 text-center">
-              Inicio
-            </div>
-
-            <div className="col-6 col-md-6 col-lg-4 bg-dark text-white p-2 text-center">
-              Servicios
-            </div>
-
-            <div className="col-6 col-md-6 col-lg-4 bg-secondary text-white p-2 text-center">
-              Contáctanos
-            </div>
-
+          <img
+            src={logo}
+            alt="Avatar Logo"
+            style={{ width: "40px" }}
+            className="rounded-pill"
+          />
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mynavbar"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="mynavbar">
+            <ul className="navbar-nav me-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/login">
+                  Mi Cuenta
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/registro">
+                  Registrarse
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/citas">
+                  +57 3112225555 citas
+                </a>
+              </li>
+            </ul>
+            <form className="d-flex" onSubmit={(e) => e.preventDefault()}>
+              <input
+                className="form-control me-2"
+                type="text"
+                placeholder="Que quieres consultar!"
+              />
+              <button className="btn btn-dark" type="submit">
+                Buscar
+              </button>
+            </form>
           </div>
+        </div>
+      </nav>
 
+      <div className="banner3">
+        <img
+          src={banner3}
+          alt="fondolistado"
+          style={{ width: "100%" }}
+          className="fondolistado"
+        />
+      </div>
+    </header>
+  );
+}
+
+// ---------- Barra de búsqueda / filtros (SOLO VISUAL, sin lógica) ----------
+function SearchFilterBar() {
+  return (
+    <div className="search-bar-wrapper">
+      <div className="search-bar">
+        <div className="search-field">
+          <label>Ubicación</label>
+          <input type="text" placeholder="Ciudad o barrio" />
         </div>
 
-      </header>
+        <div className="search-field">
+          <label>Tipo de negocio</label>
+          <select defaultValue="">
+            <option value="" disabled>
+              Selecciona
+            </option>
+            <option value="venta">Venta</option>
+            <option value="arriendo">Arriendo</option>
+          </select>
+        </div>
+
+        <div className="search-field">
+          <label>Tipo de inmueble</label>
+          <select defaultValue="">
+            <option value="" disabled>
+              Selecciona
+            </option>
+            <option value="casa">Casa</option>
+            <option value="apartamento">Apartamento</option>
+          </select>
+        </div>
+
+        <div className="search-field">
+          <label>Habitaciones</label>
+          <select defaultValue="">
+            <option value="" disabled>
+              Cualquiera
+            </option>
+            <option value="1">1+</option>
+            <option value="2">2+</option>
+            <option value="3">3+</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+
+        <div className="search-field search-field-price">
+          <label>Precio</label>
+          <div className="price-inputs">
+            <input type="text" placeholder="Mín" />
+            <span>-</span>
+            <input type="text" placeholder="Máx" />
+          </div>
+        </div>
+
+        <button className="btn btn-dark search-btn" type="button">
+          Buscar
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ---------- Componente principal ----------
+export default function ListadoInmuebles() {
+  return (
+    <>
+      <Header />
+
+      <SearchFilterBar />
 
       <section className="container">
-
         <div className="titu">
-
-          <br />
-
-          <h2>
-            Propiedades Destacadas
-          </h2>
-
-          <br />
-
+          <h2>Propiedades Destacadas</h2>
         </div>
 
         <h2 className="text-center my-4 text-secondary">
           PROPIEDADES EN VENTA
         </h2>
 
-
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 align-items-stretch">
-
-          <div className="col">
-
-            <div className="card inmueble-card h-100">
-
-              <div className="badge-tipo bg-blue">
-                Venta
-              </div>
-
-              <img
-                src="/IMAGENES/CASA1.jpeg"
-                className="card-img-top"
-                alt="Casa familiar"
-              />
-
-              <div className="card-body">
-
-                <h4 className="card-title">
-                  Casa Familiar 2 Niveles
-                </h4>
-
-                <p className="ubicacion">
-                  Chía, Cundinamarca
-                </p>
-
-                <hr />
-
-                <div className="row informacion">
-
-                  <div className="col-6">
-                    <strong>Área</strong>
-                    <br />
-                    <span>350 m²</span>
-                  </div>
-
-                  <div className="col-6">
-                    <strong>Habitaciones</strong>
-                    <br />
-                    <span>4</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Baños</strong>
-                    <br />
-                    <span>3</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Parqueaderos</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between align-items-center">
-
-                  <h5 className="precio">
-                    $1.000.000.000
-                  </h5>
-
-                  <a href="#" className="btn btn-dark">
-                    Ver más
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="col">
-
-            <div className="card inmueble-card h-100">
-
-              <div className="badge-tipo bg-blue">
-                Venta
-              </div>
-
-              <img
-                src="/IMAGENES/APTO1.jpeg"
-                className="card-img-top"
-                alt="Apartamento Ciudad Salitre"
-              />
-
-              <div className="card-body">
-
-                <h4 className="card-title">
-                  Apartamento - Ciudad Salitre
-                </h4>
-
-                <p className="ubicacion">
-                  Bogotá D.C.
-                </p>
-
-                <hr />
-
-                <div className="row informacion">
-
-                  <div className="col-6">
-                    <strong>Área</strong>
-                    <br />
-                    <span>69 m²</span>
-                  </div>
-
-                  <div className="col-6">
-                    <strong>Habitaciones</strong>
-                    <br />
-                    <span>3</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Baños</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Parqueaderos</strong>
-                    <br />
-                    <span>1</span>
-                  </div>
-
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between align-items-center">
-
-                  <h5 className="precio">
-                    $450.000.000
-                  </h5>
-
-                  <a href="#" className="btn btn-dark">
-                    Ver más
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className="col">
-
-            <div className="card inmueble-card h-100">
-
-              <div className="badge-tipo bg-blue">
-                Venta
-              </div>
-
-              <img
-                src="/IMAGENES/APTO2.jpg"
-                className="card-img-top"
-                alt="Apartamento Chico Norte"
-              />
-
-              <div className="card-body">
-
-                <h4 className="card-title">
-                  Apartamento - Chico Norte
-                </h4>
-
-                <p className="ubicacion">
-                  Bogotá D.C.
-                </p>
-
-                <hr />
-
-                <div className="row informacion">
-
-                  <div className="col-6">
-                    <strong>Área</strong>
-                    <br />
-                    <span>120 m²</span>
-                  </div>
-
-                  <div className="col-6">
-                    <strong>Habitaciones</strong>
-                    <br />
-                    <span>4</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Baños</strong>
-                    <br />
-                    <span>3</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Parqueaderos</strong>
-                    <br />
-                    <span>1</span>
-                  </div>
-
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between align-items-center">
-
-                  <h5 className="precio">
-                    $800.000.000
-                  </h5>
-
-                  <a href="#" className="btn btn-dark">
-                    Ver más
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
+        <div className="row g-4 align-items-stretch">
+          {propiedadesVenta.map((propiedad) => (
+            <PropertyCard key={propiedad.id} propiedad={propiedad} />
+          ))}
         </div>
 
         <h2 className="text-center my-4 text-secondary">
           PROPIEDADES EN ARRIENDO
         </h2>
 
-
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-          <div className="col">
-
-            <div className="card inmueble-card h-100">
-
-              <div className="badge-tipo bg-orange">
-                Arriendo
-              </div>
-
-              <img
-                src="/IMAGENES/APTO3.jpg"
-                className="card-img-top"
-                alt="Apartamento Poblado"
-              />
-
-              <div className="card-body">
-
-                <h4 className="card-title">
-                  Apartamento - Poblado
-                </h4>
-
-                <p className="ubicacion">
-                  Medellín
-                </p>
-
-                <hr />
-
-                <div className="row informacion">
-
-                  <div className="col-6">
-                    <strong>Área</strong>
-                    <br />
-                    <span>98 m²</span>
-                  </div>
-
-                  <div className="col-6">
-                    <strong>Habitaciones</strong>
-                    <br />
-                    <span>3</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Baños</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Parqueaderos</strong>
-                    <br />
-                    <span>1</span>
-                  </div>
-
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between align-items-center">
-
-                  <h5 className="precio">
-                    $2.000.000 / mes
-                  </h5>
-
-                  <a href="#" className="btn btn-dark">
-                    Ver más
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="col">
-
-            <div className="card inmueble-card h-100">
-
-              <div className="badge-tipo bg-orange">
-                Arriendo
-              </div>
-
-              <img
-                src="/IMAGENES/APTO5.jpg"
-                className="card-img-top"
-                alt="Apartamento Chapinero"
-              />
-
-              <div className="card-body">
-
-                <h4 className="card-title">
-                  Apartamento - Chapinero
-                </h4>
-
-                <p className="ubicacion">
-                  Bogotá D.C.
-                </p>
-
-                <hr />
-
-                <div className="row informacion">
-
-                  <div className="col-6">
-                    <strong>Área</strong>
-                    <br />
-                    <span>54 m²</span>
-                  </div>
-
-                  <div className="col-6">
-                    <strong>Habitaciones</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Baños</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Parqueaderos</strong>
-                    <br />
-                    <span>1</span>
-                  </div>
-
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between align-items-center">
-
-                  <h5 className="precio">
-                    $1.700.000 / mes
-                  </h5>
-
-                  <a href="#" className="btn btn-dark">
-                    Ver más
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div className="col">
-
-            <div className="card inmueble-card h-100">
-
-              <div className="badge-tipo bg-orange">
-                Arriendo
-              </div>
-
-              <img
-                src="/IMAGENES/APTO4.jpg"
-                className="card-img-top"
-                alt="Apartamento Bocagrande"
-              />
-
-              <div className="card-body">
-
-                <h4 className="card-title">
-                  Apartamento - Bocagrande
-                </h4>
-
-                <p className="ubicacion">
-                  Cartagena
-                </p>
-
-                <hr />
-
-                <div className="row informacion">
-
-                  <div className="col-6">
-                    <strong>Área</strong>
-                    <br />
-                    <span>89 m²</span>
-                  </div>
-
-                  <div className="col-6">
-                    <strong>Habitaciones</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Baños</strong>
-                    <br />
-                    <span>2</span>
-                  </div>
-
-                  <div className="col-6 mt-3">
-                    <strong>Parqueaderos</strong>
-                    <br />
-                    <span>1</span>
-                  </div>
-
-                </div>
-
-                <hr />
-
-                <div className="d-flex justify-content-between align-items-center">
-
-                  <h5 className="precio">
-                    $1.900.000 / mes
-                  </h5>
-
-                  <a href="#" className="btn btn-dark">
-                    Ver más
-                  </a>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
+          {propiedadesArriendo.map((propiedad) => (
+            <PropertyCard key={propiedad.id} propiedad={propiedad} />
+          ))}
         </div>
-
       </section>
 
-      <footer className="bg-dark text-white text-center py-3 mt-5">
-
-        <p>
-          &copy; 2026 INMOBILIARIA - Todos los Derechos Reservados
-        </p>
-
-      </footer>
-
-    </div>
+      <Footer />
+    </>
   );
 }
-
-export default Listadoinmueble;

@@ -4,7 +4,7 @@ import Formularioiniciosesion from "./components/Formularioiniciosesion.jsx";
 import Formularioregistro from "./components/Formularioregistro.jsx";
 import Listadoinmueble from "./components/Listadoinmueble.jsx";
 import GestionInmuebles from "./components/GestionInmuebles.jsx";
-
+import Programaciondecitas from "./components/Programaciondecitas.jsx";
 import "./App.css";
 
 function App() {
@@ -59,6 +59,12 @@ function App() {
       {pagina === "gestion" && (
         <GestionInmuebles />
       )}
+
+      {pagina === "citas" && (
+        <Programaciondecitas />
+      )}
+
+
     </>
   );
 }
