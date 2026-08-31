@@ -2,7 +2,12 @@ import { useState } from "react";
 import Footer from "./Footer.jsx";
 import "../App.css";
 
-function Formularioiniciosesion({ irARegistro, iniciarSesion }) {
+// Recomendado: importar imágenes directamente para evitar fallos en build/producción
+import iconoUsuario from "../assets/IMAGENES/ICONOUSU.png";
+import iconoContra from "../assets/IMAGENES/ICONOCONTRA.png";
+import logoInmo from "../assets/IMAGENES/LOGOINMO1.png";
+
+function Formularioiniciosesion({ irARegistro, irAInmuebles, iniciarSesion }) {
   const [usuario, setUsuario] = useState("");
   const [contrasena, setContrasena] = useState("");
   const [recordarme, setRecordarme] = useState(false);
@@ -20,13 +25,15 @@ function Formularioiniciosesion({ irARegistro, iniciarSesion }) {
       return;
     }
 
-    console.log("Usuario:", usuario);
-    console.log("Contraseña:", contrasena);
-    console.log("Recordarme:", recordarme);
-
-    alert("Inicio de sesión exitoso");
-
-    iniciarSesion("usuario");
+    if (usuario === "admin" && contrasena === "admin") {
+      alert("Inicio de sesión como administrador");
+      iniciarSesion("admin");
+    } else if (usuario === "usuario" && contrasena === "1234") {
+      alert("Inicio de sesión como usuario");
+      iniciarSesion("usuario");
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
   };
 
   return (
@@ -38,8 +45,7 @@ function Formularioiniciosesion({ irARegistro, iniciarSesion }) {
 
             <form onSubmit={iniciarSesionFormulario}>
               <div className="login-input-icon">
-                <img src="/src/assets/IMAGENES/ICONOUSU.png" alt="Usuario" />
-
+                <img src={iconoUsuario} alt="Usuario" />
                 <input
                   type="text"
                   placeholder="Usuario o correo electrónico"
@@ -49,11 +55,7 @@ function Formularioiniciosesion({ irARegistro, iniciarSesion }) {
               </div>
 
               <div className="login-input-icon">
-                <img
-                  src="/src/assets/IMAGENES/ICONOCONTRA.png"
-                  alt="Contraseña"
-                />
-
+                <img src={iconoContra} alt="Contraseña" />
                 <input
                   type="password"
                   placeholder="Contraseña"
@@ -72,11 +74,26 @@ function Formularioiniciosesion({ irARegistro, iniciarSesion }) {
                   Recordarme
                 </label>
 
-                <a href="#">Olvidé mi contraseña</a>
+                <a href="#!" onClick={(e) => e.preventDefault()}>
+                  Olvidé mi contraseña
+                </a>
               </div>
 
               <button type="submit">INICIAR SESIÓN</button>
             </form>
+
+            <div className="login-registro">
+              <p>¿No tienes una cuenta?</p>
+              <a
+                href="#!"
+                onClick={(e) => {
+                  e.preventDefault();
+                  irARegistro();
+                }}
+              >
+                Regístrate aquí
+              </a>
+            </div>
 
             <div className="login-redes">
               <h3>Inicia también con:</h3>
@@ -109,30 +126,30 @@ function Formularioiniciosesion({ irARegistro, iniciarSesion }) {
 
               <p>
                 Al continuar, aceptas nuestros{" "}
-                <a href="#">Términos de uso</a> y{" "}
-                <a href="#">Política de privacidad</a>.
+                <a href="#!" onClick={(e) => e.preventDefault()}>
+                  Términos de uso
+                </a>{" "}
+                y{" "}
+                <a href="#!" onClick={(e) => e.preventDefault()}>
+                  Política de privacidad
+                </a>.
               </p>
             </div>
           </div>
         </div>
 
         <div className="login-right">
-          <img
-            src="/src/assets/IMAGENES/LOGOINMO1.png"
-            alt="Logo inmobiliaria"
-          />
+          <img src={logoInmo} alt="Logo inmobiliaria" />
 
-          <div className="login-registro">
-            <p>¿No tienes una cuenta?</p>
-
+          <div className="login-pagina">
             <a
-              href="#"
+              href="#!"
               onClick={(e) => {
                 e.preventDefault();
-                irARegistro();
+                irAInmuebles();
               }}
             >
-              Regístrate aquí
+              Ver inmuebles sin iniciar sesión
             </a>
           </div>
         </div>

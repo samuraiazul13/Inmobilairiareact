@@ -2,7 +2,8 @@ import { useState } from "react";
 import Footer from "./Footer.jsx";
 import "../App.css";
 
-function Programaciondecitas() {
+// 1. Se agrega irAInmuebles (o irAInicio) en la desestructuración de props
+function Formulariocitas({ irAInmuebles, irALogin, irACitas, cerrarSesion }) {
   const [citas, setCitas] = useState([]);
 
   return (
@@ -12,7 +13,7 @@ function Programaciondecitas() {
           <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             <div className="container-fluid">
               <img
-                src="/src/IMAGENES/logoblanco.png"
+                src="./src/assets/IMAGENES/logoblanco.png"
                 alt="Avatar Logo"
                 style={{ width: "40px" }}
                 className="rounded-pill"
@@ -28,17 +29,39 @@ function Programaciondecitas() {
               <div className="collapse navbar-collapse" id="mynavbar">
                 <ul className="navbar-nav me-auto">
                   <li className="nav-item">
-                    <a className="nav-link" href="iniciosesion.html">
-                      Mi Cuenta
+                    <a
+                      className="nav-link"
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (irAInmuebles) irAInmuebles(); // Llama a la navegación de inicio/inmuebles
+                      }}
+                    >
+                      Ver Inmuebles
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="Registro.html">
-                      Registrarse
+                    <a
+                      className="nav-link"
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (cerrarSesion) cerrarSesion(); // O irALogin() según tu lógica
+                        else if (irALogin) irALogin();
+                      }}
+                    >
+                      Cerrar Sesión
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="javascript:void(0)">
+                    <a
+                      className="nav-link"
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (irACitas) irACitas();
+                      }}
+                    >
                       +57 3112225555 citas
                     </a>
                   </li>
@@ -62,7 +85,7 @@ function Programaciondecitas() {
 
           <div className="citas-banner">
             <img
-              src="/src/IMAGENES/Banner2.png"
+              src="./src/assets/IMAGENES/Banner2.png"
               alt="fondocitas"
               style={{ width: "100%" }}
               className="citas-fondocitas"
@@ -80,7 +103,7 @@ function Programaciondecitas() {
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="citas-input-icon">
                   <img
-                    src="/src/IMAGENES/ICONOUSU.png"
+                    src="./src/assets/IMAGENES/ICONOUSU.png"
                     alt="User icon for names input field"
                   />
                   <input type="text" placeholder="Nombres" />
@@ -88,7 +111,7 @@ function Programaciondecitas() {
 
                 <div className="citas-input-icon">
                   <img
-                    src="/src/IMAGENES/ICONOUSU.png"
+                    src="./src/assets/IMAGENES/ICONOUSU.png"
                     alt="User icon for last names input field"
                   />
                   <input type="text" placeholder="Apellidos" />
@@ -96,7 +119,7 @@ function Programaciondecitas() {
 
                 <div className="citas-input-icon">
                   <img
-                    src="/src/IMAGENES/icorreo.png"
+                    src="./src/assets/IMAGENES/icorreo.png"
                     alt="Email icon for electronic mail input field"
                   />
                   <input type="email" placeholder="Correo electrónico" />
@@ -104,7 +127,7 @@ function Programaciondecitas() {
 
                 <div className="citas-input-icon">
                   <img
-                    src="/src/IMAGENES/itelef.png"
+                    src="./src/assets/IMAGENES/itelef.png"
                     alt="Phone icon for telephone input field"
                   />
                   <input type="tel" placeholder="Teléfono" />
@@ -172,4 +195,4 @@ function Programaciondecitas() {
   );
 }
 
-export default Programaciondecitas;
+export default Formulariocitas;

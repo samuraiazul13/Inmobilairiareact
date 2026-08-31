@@ -3,14 +3,14 @@ import "../App.css";
 
 // ---------- Imágenes ----------
 import logo from "../assets/IMAGENES/logoblanco.png";
-import banner3 from "../assets/IMAGENES/Banner3.png";
+import banner1 from "../assets/IMAGENES/Banner1.jpeg";
 import casa1 from "../assets/IMAGENES/CASA1.jpeg";
 import apto1 from "../assets/IMAGENES/APTO1.jpeg";
 import apto2 from "../assets/IMAGENES/APTO2.jpg";
 import apto3 from "../assets/IMAGENES/APTO3.jpg";
 import apto4 from "../assets/IMAGENES/APTO4.jpg";
 import apto5 from "../assets/IMAGENES/APTO5.jpg";
-// ---------- Datos ----------
+
 const propiedadesVenta = [
   {
     id: 1,
@@ -95,8 +95,8 @@ const propiedadesArriendo = [
   },
 ];
 
-// ---------- Tarjeta de inmueble ----------
-function PropertyCard({ propiedad }) {
+
+function PropertyCard({ propiedad, verDetalle }) {
   const {
     tipo,
     badgeClass,
@@ -150,9 +150,13 @@ function PropertyCard({ propiedad }) {
 
           <div className="d-flex justify-content-between align-items-center">
             <h5 className="precio">{precio}</h5>
-            <a href="#" className="btn btn-dark">
+            <button
+              type="button"
+              className="btn btn-dark"
+              onClick={() => verDetalle && verDetalle(propiedad)}
+            >
               Ver más
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -161,9 +165,9 @@ function PropertyCard({ propiedad }) {
 }
 
 // ---------- Header (nav + banner) ----------
-function Header() {
+function Header({ irAInmuebles, irALogin, irACitas, cerrarSesion }) {
   return (
-    <header className="header">
+    <header className="li-header">
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="container-fluid">
           <img
@@ -183,17 +187,39 @@ function Header() {
           <div className="collapse navbar-collapse" id="mynavbar">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className="nav-link" href="/login">
-                  Mi Cuenta
+                <a
+                  className="nav-link"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (irAInmuebles) irAInmuebles();
+                  }}
+                >
+                  Ver Inmuebles
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/registro">
-                  Registrarse
+                <a
+                  className="nav-link"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (cerrarSesion) cerrarSesion();
+                    else if (irALogin) irALogin();
+                  }}
+                >
+                  Cerrar Sesión
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/citas">
+                <a
+                  className="nav-link"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (irACitas) irACitas();
+                  }}
+                >
                   +57 3112225555 citas
                 </a>
               </li>
@@ -212,9 +238,9 @@ function Header() {
         </div>
       </nav>
 
-      <div className="banner3">
+      <div className="banner1">
         <img
-          src={banner3}
+          src={banner1}
           alt="fondolistado"
           style={{ width: "100%" }}
           className="fondolistado"
@@ -224,7 +250,6 @@ function Header() {
   );
 }
 
-// ---------- Barra de búsqueda / filtros (SOLO VISUAL, sin lógica) ----------
 function SearchFilterBar() {
   return (
     <div className="search-bar-wrapper">
@@ -287,10 +312,11 @@ function SearchFilterBar() {
 }
 
 // ---------- Componente principal ----------
-export default function ListadoInmuebles() {
+export default function ListadoInmuebles({
+  verDetalle, irALogin, cerrarSesion, irACitas }) {
   return (
     <>
-      <Header />
+      <Header irALogin={irALogin} cerrarSesion={cerrarSesion} irACitas={irACitas} />
 
       <SearchFilterBar />
 
@@ -305,7 +331,7 @@ export default function ListadoInmuebles() {
 
         <div className="row g-4 align-items-stretch">
           {propiedadesVenta.map((propiedad) => (
-            <PropertyCard key={propiedad.id} propiedad={propiedad} />
+            <PropertyCard key={propiedad.id} propiedad={propiedad} verDetalle={verDetalle} />
           ))}
         </div>
 
@@ -315,7 +341,7 @@ export default function ListadoInmuebles() {
 
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {propiedadesArriendo.map((propiedad) => (
-            <PropertyCard key={propiedad.id} propiedad={propiedad} />
+            <PropertyCard key={propiedad.id} propiedad={propiedad} verDetalle={verDetalle} />
           ))}
         </div>
       </section>

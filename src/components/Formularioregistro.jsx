@@ -2,49 +2,63 @@ import { useState } from "react";
 import Footer from "./Footer.jsx";
 import "../App.css";
 
-function Formularioregistro({ persona, setPersona, anterior, siguiente }) {
+function Formularioregistro({ persona = {}, setPersona, anterior, siguiente }) {
   const [confirmarContrasena, setConfirmarContrasena] = useState("");
+
+  const handleChange = (campo, valor) => {
+    setPersona((prev) => ({
+      ...prev,
+      [campo]: valor,
+    }));
+  };
 
   const registrar = (e) => {
     e.preventDefault();
 
-    if (persona.nombre.trim() === "") {
+    const { nombre = "", apellido = "", correo = "", telefono = "", contrasena = "" } = persona;
+
+    if (!nombre.trim()) {
       alert("Ingrese sus nombres");
       return;
     }
 
-    if (persona.apellido.trim() === "") {
+    if (!apellido.trim()) {
       alert("Ingrese sus apellidos");
       return;
     }
 
-    if (persona.correo.trim() === "") {
+    if (!correo.trim()) {
       alert("Ingrese su correo electrónico");
       return;
     }
 
-    if (persona.telefono.trim() === "") {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(correo)) {
+      alert("Ingrese un correo electrónico válido");
+      return;
+    }
+
+    if (!telefono.trim()) {
       alert("Ingrese su teléfono");
       return;
     }
 
-    if (persona.contrasena.trim() === "") {
+    if (!contrasena.trim()) {
       alert("Ingrese una contraseña");
       return;
     }
 
-    if (confirmarContrasena.trim() === "") {
+    if (!confirmarContrasena.trim()) {
       alert("Confirme su contraseña");
       return;
     }
 
-    if (persona.contrasena !== confirmarContrasena) {
+    if (contrasena !== confirmarContrasena) {
       alert("Las contraseñas no coinciden");
       return;
     }
 
-    console.log("Datos registrados:", persona);
-
+    console.log("Datos registrados correctamente:", persona);
     siguiente();
   };
 
@@ -61,79 +75,73 @@ function Formularioregistro({ persona, setPersona, anterior, siguiente }) {
 
             <form onSubmit={registrar}>
               <div className="registro-input-icon">
-                <img src="/src/assets/IMAGENES/ICONOUSU.png" alt="Nombres" />
-
+                <img src="./src/assets/IMAGENES/ICONOUSU.png" alt="Nombres" />
                 <input
                   type="text"
                   placeholder="Nombres"
-                  value={persona.nombre}
-                  onChange={(e) =>
-                    setPersona({ ...persona, nombre: e.target.value })
-                  }
+                  value={persona.nombre || ""}
+                  onChange={(e) => handleChange("nombre", e.target.value)}
                 />
               </div>
 
               <div className="registro-input-icon">
-                <img src="/src/assets/IMAGENES/ICONOUSU.png" alt="Apellidos" />
-
+                <img src="./src/assets/IMAGENES/ICONOUSU.png" alt="Apellidos" />
                 <input
                   type="text"
                   placeholder="Apellidos"
-                  value={persona.apellido}
-                  onChange={(e) =>
-                    setPersona({ ...persona, apellido: e.target.value })
-                  }
+                  value={persona.apellido || ""}
+                  onChange={(e) => handleChange("apellido", e.target.value)}
                 />
               </div>
 
               <div className="registro-input-icon">
-                <img src="/src/assets/IMAGENES/icorreo.png" alt="Correo" />
-
+                <img src="./src/assets/IMAGENES/icorreo.png" alt="Correo" />
                 <input
                   type="email"
                   placeholder="Correo electrónico"
-                  value={persona.correo}
-                  onChange={(e) =>
-                    setPersona({ ...persona, correo: e.target.value })
-                  }
+                  value={persona.correo || ""}
+                  onChange={(e) => handleChange("correo", e.target.value)}
                 />
               </div>
 
               <div className="registro-input-icon">
-                <img src="/src/assets/IMAGENES/itelef.png" alt="Teléfono" />
-
+                <img src="./src/assets/IMAGENES/itelef.png" alt="Teléfono" />
                 <input
                   type="tel"
                   placeholder="Teléfono"
-                  value={persona.telefono}
-                  onChange={(e) =>
-                    setPersona({ ...persona, telefono: e.target.value })
-                  }
+                  value={persona.telefono || ""}
+                  onChange={(e) => handleChange("telefono", e.target.value)}
+                />
+              </div>
+
+              <div className="registro-input-icon">
+                <img src="./src/assets/IMAGENES/icasa.png" alt="Ciudad" />
+                <input
+                  type="text"
+                  placeholder="Ciudad"
+                  value={persona.ciudad || ""}
+                  onChange={(e) => handleChange("ciudad", e.target.value)}
                 />
               </div>
 
               <div className="registro-input-icon">
                 <img
-                  src="/src/assets/IMAGENES/ICONOCONTRA.png"
+                  src="./src/assets/IMAGENES/ICONOCONTRA.png"
                   alt="Contraseña"
                 />
-
                 <input
                   type="password"
                   placeholder="Contraseña"
-                  value={persona.contrasena}
-                  onChange={(e) =>
-                    setPersona({ ...persona, contrasena: e.target.value })
-                  }
+                  value={persona.contrasena || ""}
+                  onChange={(e) => handleChange("contrasena", e.target.value)}
                 />
               </div>
 
               <div className="registro-input-icon">
                 <img
-                  src="/src/assets/IMAGENES/ICONOCONTRA.png"
+                  src="./src/assets/IMAGENES/ICONOCONTRA.png"
                   alt="Confirmar contraseña"
                 />
-
                 <input
                   type="password"
                   placeholder="Ingrese nuevamente la contraseña"
@@ -161,7 +169,7 @@ function Formularioregistro({ persona, setPersona, anterior, siguiente }) {
 
         <div className="registro-right">
           <img
-            src="/src/assets/IMAGENES/LOGOINMO1.png"
+            src="./src/assets/IMAGENES/LOGOINMO1.png"
             alt="Logo inmobiliaria"
           />
 
@@ -174,7 +182,6 @@ function Formularioregistro({ persona, setPersona, anterior, siguiente }) {
 
             <div className="registro-login-link">
               <p>¿Ya tienes una cuenta?</p>
-
               <a
                 href="#"
                 onClick={(e) => {
