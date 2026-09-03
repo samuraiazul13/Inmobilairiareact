@@ -7,6 +7,7 @@ import Detalleinmueble from "./components/Detalleinmueble.jsx";
 import GestionInmuebles from "./components/GestionInmuebles.jsx";
 import Gestiondecitas from "./components/Gestiondecitas.jsx";
 import Formulariocitas from "./components/Formulariocitas.jsx";
+import Registroinmueble from "./components/Registroinmueble.jsx";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
 
   const [inmuebleSeleccionado, setInmuebleSeleccionado] = useState(null);
 
+  // Estado del formulario de "Registrar inmueble" (admin)
+  const [inmuebleNuevo, setInmuebleNuevo] = useState({});
+
   const verDetalle = (propiedad) => {
     setInmuebleSeleccionado(propiedad);
     setPagina("detalle");
@@ -33,14 +37,24 @@ function App() {
     setPagina("login");
   };
 
+  // Agendar cita requiere sesión iniciada como "usuario".
+  // Si no hay sesión, se manda a login en vez de dejar la pantalla en blanco.
+  const irACitas = () => {
+    if (rol === "usuario") {
+      setPagina("citas");
+    } else {
+      setPagina("login");
+    }
+  };
 
   const navAdmin = {
     irAInicio: () => setPagina("gestion"),
     irAGestionInmuebles: () => setPagina("gestion"),
-    irAUsuarios: () => setPagina("usuarios"),     
+    irARegistrarInmueble: () => setPagina("registrarInmueble"),
+    irAUsuarios: () => setPagina("usuarios"),
     irACitas: () => setPagina("gestionCitas"),
-    irAReportes: () => setPagina("reportes"),      
-    irAConfiguracion: () => setPagina("configuracion"), 
+    irAReportes: () => setPagina("reportes"),
+    irAConfiguracion: () => setPagina("configuracion"),
     cerrarSesion: cerrarSesion,
   };
 
@@ -76,8 +90,9 @@ function App() {
       {pagina === "inmuebles" && (
         <Listadoinmueble
           verDetalle={verDetalle}
+          irALogin={() => setPagina("login")}
           irARegistro={() => setPagina("registro")}
-          irACitas={() => setPagina("citas")}
+          irACitas={irACitas}
           cerrarSesion={cerrarSesion}
         />
       )}
@@ -88,7 +103,7 @@ function App() {
           inmueble={inmuebleSeleccionado}
           irALogin={() => setPagina("login")}
           irAInmuebles={() => setPagina("inmuebles")}
-          irACitas={() => setPagina("citas")}
+          irACitas={irACitas}
           volver={() => setPagina("inmuebles")}
           cerrarSesion={cerrarSesion}
         />
@@ -104,12 +119,26 @@ function App() {
         <Gestiondecitas {...navAdmin} />
       )}
 
-      {/* CITAS (agendar, para el usuario final) */}
+      {/* GESTIÓN ADMINISTRADOR — Registrar inmueble */}
+      {pagina === "registrarInmueble" && rol === "admin" && (
+        <Registroinmueble
+          inmueble={inmuebleNuevo}
+          setInmueble={setInmuebleNuevo}
+          anterior={() => setPagina("gestion")}
+          siguiente={() => {
+            alert("¡Inmueble registrado!");
+            setInmuebleNuevo({});
+            setPagina("gestion");
+          }}
+        />
+      )}
+
+      {/* CITAS (agendar, para el usuario final ya logueado) */}
       {pagina === "citas" && rol === "usuario" && (
         <Formulariocitas
           irAInmuebles={() => setPagina("inmuebles")}
           irALogin={() => setPagina("login")}
-          irACitas={() => setPagina("citas")}
+          irACitas={irACitas}
           cerrarSesion={cerrarSesion}
         />
       )}

@@ -15,6 +15,7 @@ function GestionInmuebles({
   irAReportes,
   irAConfiguracion,
   cerrarSesion,
+  irARegistrarInmueble,
 }) {
   const [inmuebles, setInmuebles] = useState([
     {
@@ -106,8 +107,8 @@ function GestionInmuebles({
         <div className="gestion-perfil">
           <img src={logo} alt="Administrador" />
 
-          <h3>Felipe</h3>
-          <p>Administrador</p>
+          <h3>Felipe & Paula</h3>
+          <p>Administradores</p>
         </div>
 
         <ul>
@@ -201,8 +202,8 @@ function GestionInmuebles({
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h2 className="gestion-titulo">Gestión de Inmuebles</h2>
 
-            <button className="btn btn-primary" onClick={agregarInmueble}>
-              + Agregar Inmueble
+            <button className="btn btn-primary" onClick={irARegistrarInmueble}>
+              + Registrar Inmueble
             </button>
           </div>
 
